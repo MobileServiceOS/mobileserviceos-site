@@ -504,8 +504,25 @@ p { margin: 0; color: var(--text-muted); }
   border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 10px;
 }
-.feature h3 { margin-bottom: 0.4rem; }
+.feature h3 { margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 .feature p { font-size: 0.9rem; }
+
+/* Inline Pro badge used in feature card headings */
+.pro-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  line-height: 1;
+}
 
 /* WORKFLOW */
 .workflow {
