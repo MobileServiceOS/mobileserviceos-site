@@ -40,6 +40,183 @@
 
 <link rel="stylesheet" href="styles.css" />
 
+<!-- Inline overrides — keeps the page bulletproof even when styles.css
+     is missing or out of sync. Caps the hero phone size on mobile,
+     and gives the FAQ section a fallback look so it works without
+     external stylesheet rules. -->
+<style>
+  /* ─── Section spacing rhythm ──────────────────────────────────
+     Every <section> in the page should breathe consistently. Inline
+     overrides ensure spacing stays uniform even if styles.css drifts. */
+  .section {
+    padding-block: clamp(64px, 9vw, 120px);
+  }
+  .section-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-inline: clamp(20px, 4vw, 40px);
+  }
+  .section-sub {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  /* ─── FAQ summary indicator (+/×) ───────────────────────────── */
+  .faq-list details summary::-webkit-details-marker { display: none; }
+  .faq-list details summary::after {
+    content: '+';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    transition: transform 200ms ease, color 200ms ease;
+  }
+  .faq-list details[open] summary::after {
+    content: '×';
+    color: #c8a44a;
+    font-size: 26px;
+  }
+  .faq-list details summary:hover {
+    color: #c8a44a !important;
+  }
+
+  /* ─── Hero phone — cap on every breakpoint so it never
+         dominates and stays cinematic regardless of viewport. */
+  .hero-mock {
+    max-width: clamp(220px, 28vw, 300px) !important;
+    margin: 24px auto 0 !important;
+  }
+  .hero-mock .phone {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+  @media (min-width: 1024px) {
+    /* On desktop, the hero is side-by-side — give the phone its
+       column but cap visually so copy still leads. */
+    .hero-mock { max-width: 280px !important; margin: 0 auto !important; }
+  }
+
+  /* ─── Screenshot gallery — the main responsive refactor.
+         Goal: phones look cinematic but never dominate.
+         The phone's MAX-HEIGHT caps it regardless of column width.
+         aspect-ratio is removed in favor of intrinsic image height
+         constrained by the frame's max-height. */
+  .ss-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: clamp(20px, 3vw, 36px) !important;
+    margin-top: clamp(28px, 4vw, 44px) !important;
+    align-items: start !important;
+  }
+  .ss-card {
+    margin: 0 !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .ss-card .ss-frame {
+    /* Cap both axes: width AND height. Image is constrained
+       within. object-fit: contain on the image preserves
+       aspect ratio without overflowing the frame. */
+    width: 100% !important;
+    max-width: clamp(180px, 22vw, 240px) !important;
+    aspect-ratio: 9 / 19 !important;
+    max-height: 50vh !important;
+    padding: clamp(8px, 1vw, 12px) !important;
+    border-radius: clamp(22px, 2.4vw, 30px) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+  }
+  .ss-card .ss-frame img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    border-radius: clamp(16px, 1.8vw, 22px) !important;
+  }
+  .ss-card figcaption {
+    margin-top: clamp(10px, 1.2vw, 16px) !important;
+    font-size: clamp(13px, 1.1vw, 15px) !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+  }
+  .ss-card p {
+    margin-top: 4px !important;
+    font-size: clamp(11px, 0.95vw, 13px) !important;
+    color: rgba(255,255,255,0.55) !important;
+    line-height: 1.55 !important;
+    max-width: 240px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Desktop: 3 columns ensures phones never get too wide  */
+  @media (min-width: 980px) {
+    .ss-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 32px !important;
+    }
+    .ss-card .ss-frame {
+      max-width: 220px !important;
+      max-height: 480px !important;
+    }
+  }
+
+  /* Tablet: 2 columns */
+  @media (min-width: 600px) and (max-width: 979px) {
+    .ss-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .ss-card .ss-frame {
+      max-width: 210px !important;
+      max-height: 460px !important;
+    }
+  }
+
+  /* Mobile: 1 column, slightly smaller phone */
+  @media (max-width: 599px) {
+    .ss-grid {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+    }
+    .ss-card .ss-frame {
+      max-width: 200px !important;
+      max-height: 430px !important;
+    }
+  }
+
+  /* ─── Feature grid responsiveness ────────────────────────────
+     The 10-card features grid was already grid-based; this ensures
+     consistent gap and never overflows on narrow viewports. */
+  .feature-grid {
+    gap: clamp(14px, 2vw, 22px) !important;
+  }
+  .feature {
+    min-width: 0 !important;
+  }
+
+  /* ─── Plans grid balance ────────────────────────────────────── */
+  .plan-grid {
+    align-items: stretch !important;
+  }
+  .plan {
+    min-width: 0 !important;
+  }
+
+  /* ─── Overflow safety ──────────────────────────────────────── */
+  body { overflow-x: hidden; }
+  img { max-width: 100%; height: auto; }
+</style>
+
 <!-- Schema: Organization -->
 <script type="application/ld+json">
 {
@@ -228,15 +405,14 @@
     </ul>
   </div>
 
-  <div class="hero-mock" aria-hidden="true">
-    <div class="phone">
+  <div class="hero-mock" aria-hidden="true" style="max-width:320px;margin:0 auto;">
+    <div class="phone" style="max-width:300px;margin:0 auto;">
       <div class="phone-notch"></div>
       <div class="phone-screen" style="padding:0;overflow:hidden;">
         <img
           src="dashboard.jpeg"
           alt="Mobile Service OS dashboard showing weekly profit, today's jobs, pending payments"
           loading="eager"
-          style="display:block;width:100%;height:100%;object-fit:cover;object-position:top center;"
         />
       </div>
     </div>
@@ -432,152 +608,87 @@
       <p class="section-sub">Mobile Service OS is live and shipping. These are actual screenshots from a working mobile tire business running on the platform today — not concepts, not mockups.</p>
     </div>
 
-    <div class="ss-grid" style="
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
-      margin-top: 36px;
-    ">
-      <figure class="ss-card" style="margin:0;text-align:center;">
-        <div class="ss-frame" style="
-          background: linear-gradient(155deg, #16161a 0%, #0a0a0a 100%);
-          border: 1px solid rgba(200,164,74,0.18);
-          border-radius: 28px;
-          padding: 14px 12px;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-          overflow: hidden;
-          aspect-ratio: 9/19.5;
-          display: flex; align-items: flex-start; justify-content: center;
-        ">
+    <div class="ss-grid">
+      <figure class="ss-card">
+        <div class="ss-frame" style="background:linear-gradient(155deg,#16161a 0%,#0a0a0a 100%);border:1px solid rgba(200,164,74,0.18);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
           <img
             src="quick-quote.jpeg"
             alt="Quick Quote screen with suggested $90 and premium $115 pricing for a flat tire repair"
             loading="lazy"
-            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
           />
         </div>
-        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Quick Quote</figcaption>
-        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+        <figcaption>Quick Quote</figcaption>
+        <p>
           Tap the service, vehicle, and miles. Suggested and premium prices appear instantly. Lead-source breakdown built in.
         </p>
       </figure>
 
-      <figure class="ss-card" style="margin:0;text-align:center;">
-        <div class="ss-frame" style="
-          background: linear-gradient(155deg, #16161a 0%, #0a0a0a 100%);
-          border: 1px solid rgba(200,164,74,0.18);
-          border-radius: 28px;
-          padding: 14px 12px;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-          overflow: hidden;
-          aspect-ratio: 9/19.5;
-          display: flex; align-items: flex-start; justify-content: center;
-        ">
+      <figure class="ss-card">
+        <div class="ss-frame" style="background:linear-gradient(155deg,#16161a 0%,#0a0a0a 100%);border:1px solid rgba(200,164,74,0.18);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
           <img
             src="job-history.jpeg"
             alt="Job History view with completed tire jobs, tire sizes, locations, profit per job"
             loading="lazy"
-            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
           />
         </div>
-        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Job History</figcaption>
-        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+        <figcaption>Job History</figcaption>
+        <p>
           Every roadside call logged. Filter by completed, pending, cancelled, unpaid. Search by name, service, location.
         </p>
       </figure>
 
-      <figure class="ss-card" style="margin:0;text-align:center;">
-        <div class="ss-frame" style="
-          background: linear-gradient(155deg, #16161a 0%, #0a0a0a 100%);
-          border: 1px solid rgba(200,164,74,0.18);
-          border-radius: 28px;
-          padding: 14px 12px;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-          overflow: hidden;
-          aspect-ratio: 9/19.5;
-          display: flex; align-items: flex-start; justify-content: center;
-        ">
+      <figure class="ss-card">
+        <div class="ss-frame" style="background:linear-gradient(155deg,#16161a 0%,#0a0a0a 100%);border:1px solid rgba(200,164,74,0.18);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
           <img
             src="inventory.jpeg"
             alt="Tire inventory by size and brand with hot sizes and low-stock alerts"
             loading="lazy"
-            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
           />
         </div>
-        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Tire Inventory</figcaption>
-        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+        <figcaption>Tire Inventory</figcaption>
+        <p>
           Stock by size and brand. Hot sizes pin to the top. Low-stock badges flag before you roll out empty.
         </p>
       </figure>
 
-      <figure class="ss-card" style="margin:0;text-align:center;">
-        <div class="ss-frame" style="
-          background: #fff;
-          border: 1px solid rgba(200,164,74,0.18);
-          border-radius: 28px;
-          padding: 14px 12px;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-          overflow: hidden;
-          aspect-ratio: 9/19.5;
-          display: flex; align-items: flex-start; justify-content: center;
-        ">
+      <figure class="ss-card">
+        <div class="ss-frame" style="background:#fff;border:1px solid rgba(200,164,74,0.18);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
           <img
             src="invoice.jpeg"
             alt="Branded Wheel Rush Mobile Tire Repair invoice showing logo, service details, total paid"
             loading="lazy"
-            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
           />
         </div>
-        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Branded Invoice <span class="pro-tag" style="font-size:9px;padding:2px 6px;background:rgba(200,164,74,0.18);color:#c8a44a;border-radius:4px;margin-left:4px;">Pro</span></figcaption>
-        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+        <figcaption>Branded Invoice <span class="pro-tag" style="font-size:9px;padding:2px 6px;background:rgba(200,164,74,0.18);color:#c8a44a;border-radius:4px;margin-left:4px;">Pro</span></figcaption>
+        <p>
           Logo, brand color, contact info, review link. Generated and sent before you leave the shoulder.
         </p>
       </figure>
 
-      <figure class="ss-card" style="margin:0;text-align:center;">
-        <div class="ss-frame" style="
-          background: #fff;
-          border: 1px solid rgba(200,164,74,0.18);
-          border-radius: 28px;
-          padding: 14px 12px;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-          overflow: hidden;
-          aspect-ratio: 9/19.5;
-          display: flex; align-items: flex-start; justify-content: center;
-        ">
+      <figure class="ss-card">
+        <div class="ss-frame" style="background:#fff;border:1px solid rgba(200,164,74,0.18);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
           <img
             src="review-sms.jpeg"
             alt="One-tap review request SMS personalized with customer name and service area"
             loading="lazy"
-            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
           />
         </div>
-        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Review Requests</figcaption>
-        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+        <figcaption>Review Requests</figcaption>
+        <p>
           Customer-name-personalized SMS with your Google review link. One tap after the job. More 5-stars, no follow-up.
         </p>
       </figure>
 
-      <figure class="ss-card" style="margin:0;text-align:center;">
-        <div class="ss-frame" style="
-          background: linear-gradient(155deg, #16161a 0%, #0a0a0a 100%);
-          border: 1px solid rgba(200,164,74,0.18);
-          border-radius: 28px;
-          padding: 14px 12px;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-          overflow: hidden;
-          aspect-ratio: 9/19.5;
-          display: flex; align-items: flex-start; justify-content: center;
-        ">
+      <figure class="ss-card">
+        <div class="ss-frame" style="background:linear-gradient(155deg,#16161a 0%,#0a0a0a 100%);border:1px solid rgba(200,164,74,0.18);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
           <img
             src="dashboard.jpeg"
             alt="Dashboard with weekly profit, today's revenue and profit, pending payments"
             loading="lazy"
-            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
           />
         </div>
-        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Profit Dashboard</figcaption>
-        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+        <figcaption>Profit Dashboard</figcaption>
+        <p>
           Weekly profit at 100% of goal. Today's net and profit. Pending payments. Real numbers, real-time.
         </p>
       </figure>
@@ -732,42 +843,42 @@
       <span class="kicker">FAQ</span>
       <h2 id="faq-title">Mobile tire &amp; roadside operator questions.</h2>
     </div>
-    <div class="faq-list">
-      <details>
-        <summary>What is Mobile Service OS?</summary>
-        <p>Mobile Service OS is software built only for mobile tire and roadside tire businesses. It runs flat tire calls, logs roadside jobs, tracks tire inventory, sends roadside invoices, requests Google reviews, and keeps every mobile tire technician on the same workflow from a phone.</p>
+    <div class="faq-list" style="max-width:760px;margin:32px auto 0;">
+      <details style="border-top:1px solid rgba(255,255,255,0.08);padding:6px 0;">
+        <summary style="padding:16px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;list-style:none;position:relative;padding-right:30px;">What is Mobile Service OS?</summary>
+        <p style="padding:0 4px 18px 4px;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;">Mobile Service OS is software built only for mobile tire and roadside tire businesses. It runs flat tire calls, logs roadside jobs, tracks tire inventory, sends roadside invoices, requests Google reviews, and keeps every mobile tire technician on the same workflow from a phone.</p>
       </details>
-      <details>
-        <summary>Is this software only for mobile tire and roadside businesses?</summary>
-        <p>Yes. Mobile Service OS is built only for mobile tire repair, roadside tire replacement, flat tire response, emergency roadside tire calls, and same day tire installation. Every screen, every field, and every workflow is designed around how tire jobs actually happen in the field.</p>
+      <details style="border-top:1px solid rgba(255,255,255,0.08);padding:6px 0;">
+        <summary style="padding:16px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;list-style:none;position:relative;padding-right:30px;">Is this software only for mobile tire and roadside businesses?</summary>
+        <p style="padding:0 4px 18px 4px;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;">Yes. Mobile Service OS is built only for mobile tire repair, roadside tire replacement, flat tire response, emergency roadside tire calls, and same day tire installation. Every screen, every field, and every workflow is designed around how tire jobs actually happen in the field.</p>
       </details>
-      <details>
-        <summary>How does the 14-day free trial work?</summary>
-        <p>Sign up and start using Mobile Service OS immediately — no credit card required. Log jobs, send invoices, invite your team, everything is unlocked. After 14 days, add a payment method to continue or your account simply pauses. We never auto-charge a card you didn't enter.</p>
+      <details style="border-top:1px solid rgba(255,255,255,0.08);padding:6px 0;">
+        <summary style="padding:16px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;list-style:none;position:relative;padding-right:30px;">How does the 14-day free trial work?</summary>
+        <p style="padding:0 4px 18px 4px;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;">Sign up and start using Mobile Service OS immediately — no credit card required. Log jobs, send invoices, invite your team, everything is unlocked. After 14 days, add a payment method to continue or your account simply pauses. We never auto-charge a card you didn't enter.</p>
       </details>
-      <details>
-        <summary>Can I install Mobile Service OS on my phone in the field?</summary>
-        <p>Yes. Mobile Service OS installs straight to the home screen on any phone your technicians use. No App Store, no Google Play, no downloads. It launches like a native app and updates instantly so your roadside crew is always on the latest version.</p>
+      <details style="border-top:1px solid rgba(255,255,255,0.08);padding:6px 0;">
+        <summary style="padding:16px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;list-style:none;position:relative;padding-right:30px;">Can I install Mobile Service OS on my phone in the field?</summary>
+        <p style="padding:0 4px 18px 4px;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;">Yes. Mobile Service OS installs straight to the home screen on any phone your technicians use. No App Store, no Google Play, no downloads. It launches like a native app and updates instantly so your roadside crew is always on the latest version.</p>
       </details>
-      <details>
-        <summary>Does it track tire inventory by size and brand?</summary>
-        <p>Yes. Mobile Service OS includes a full tire inventory module organized by tire size, brand, cost, and quantity. Stock deducts automatically the moment a tire is logged on a roadside job, and your hot sizes get flagged before you run out on a call.</p>
+      <details style="border-top:1px solid rgba(255,255,255,0.08);padding:6px 0;">
+        <summary style="padding:16px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;list-style:none;position:relative;padding-right:30px;">Does it track tire inventory by size and brand?</summary>
+        <p style="padding:0 4px 18px 4px;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;">Yes. Mobile Service OS includes a full tire inventory module organized by tire size, brand, cost, and quantity. Stock deducts automatically the moment a tire is logged on a roadside job, and your hot sizes get flagged before you run out on a call.</p>
       </details>
-      <details>
-        <summary>Can multiple mobile tire technicians use it at the same time?</summary>
-        <p>Yes. Pro accounts support multiple mobile tire technicians, each with their own login. Every flat tire call and roadside job is tagged to the tech that ran it, so revenue, jobs completed, and payment status are clear at the technician level.</p>
+      <details style="border-top:1px solid rgba(255,255,255,0.08);padding:6px 0;">
+        <summary style="padding:16px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;list-style:none;position:relative;padding-right:30px;">Can multiple mobile tire technicians use it at the same time?</summary>
+        <p style="padding:0 4px 18px 4px;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;">Yes. Pro accounts support multiple mobile tire technicians, each with their own login. Every flat tire call and roadside job is tagged to the tech that ran it, so revenue, jobs completed, and payment status are clear at the technician level.</p>
       </details>
-      <details>
-        <summary>Can it create invoices for roadside tire jobs on site?</summary>
-        <p>Yes. After a flat tire call or tire replacement is finished, Mobile Service OS generates a clean roadside invoice with the customer info, vehicle, tire size, labor, and total. The technician sends it by text or email before leaving the shoulder. On the Pro plan, every invoice goes out fully branded with your logo, business colors, and contact info.</p>
+      <details style="border-top:1px solid rgba(255,255,255,0.08);padding:6px 0;">
+        <summary style="padding:16px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;list-style:none;position:relative;padding-right:30px;">Can it create invoices for roadside tire jobs on site?</summary>
+        <p style="padding:0 4px 18px 4px;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;">Yes. After a flat tire call or tire replacement is finished, Mobile Service OS generates a clean roadside invoice with the customer info, vehicle, tire size, labor, and total. The technician sends it by text or email before leaving the shoulder. On the Pro plan, every invoice goes out fully branded with your logo, business colors, and contact info.</p>
       </details>
-      <details>
-        <summary>Does it send Google review requests after roadside tire calls?</summary>
-        <p>Yes. Once a roadside tire job is marked complete, your technician taps one button to send a review request text. The customer is routed straight to your Google Business Profile while the experience is still fresh.</p>
+      <details style="border-top:1px solid rgba(255,255,255,0.08);padding:6px 0;">
+        <summary style="padding:16px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;list-style:none;position:relative;padding-right:30px;">Does it send Google review requests after roadside tire calls?</summary>
+        <p style="padding:0 4px 18px 4px;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;">Yes. Once a roadside tire job is marked complete, your technician taps one button to send a review request text. The customer is routed straight to your Google Business Profile while the experience is still fresh.</p>
       </details>
-      <details>
-        <summary>Is Mobile Service OS only for Florida mobile tire businesses?</summary>
-        <p>No. Mobile Service OS works for mobile tire and roadside tire operators anywhere in the United States. It was built in South Florida by a working mobile tire operator, and the workflow fits any market running flat tire calls and roadside tire replacement.</p>
+      <details style="border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);padding:6px 0;">
+        <summary style="padding:16px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;list-style:none;position:relative;padding-right:30px;">Is Mobile Service OS only for Florida mobile tire businesses?</summary>
+        <p style="padding:0 4px 18px 4px;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;">No. Mobile Service OS works for mobile tire and roadside tire operators anywhere in the United States. It was built in South Florida by a working mobile tire operator, and the workflow fits any market running flat tire calls and roadside tire replacement.</p>
       </details>
     </div>
   </div>
