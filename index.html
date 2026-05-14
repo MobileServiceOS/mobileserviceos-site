@@ -186,6 +186,7 @@
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
       <a href="#workflow">Workflow</a>
       <a href="#plans">Plans</a>
       <a href="#faq">FAQ</a>
@@ -230,50 +231,13 @@
   <div class="hero-mock" aria-hidden="true">
     <div class="phone">
       <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="mock-header">
-          <span class="mock-time">9:41</span>
-          <span class="mock-title">Roadside Today</span>
-          <span class="mock-icon">⚙</span>
-        </div>
-        <div class="mock-stat">
-          <div class="mock-stat-label">Tire Revenue Today</div>
-          <div class="mock-stat-value">$1,840<span>.00</span></div>
-          <div class="mock-stat-sub">3 calls open · 5 closed</div>
-        </div>
-        <div class="mock-list">
-          <div class="mock-row">
-            <div class="mock-row-l">
-              <div class="mock-dot green"></div>
-              <div>
-                <div class="mock-row-title">F‑150 · 275/65R18 plug</div>
-                <div class="mock-row-sub">I‑595 shoulder · Paid</div>
-              </div>
-            </div>
-            <div class="mock-row-r">$340</div>
-          </div>
-          <div class="mock-row">
-            <div class="mock-row-l">
-              <div class="mock-dot amber"></div>
-              <div>
-                <div class="mock-row-title">Model Y · sidewall plug</div>
-                <div class="mock-row-sub">Hollywood Blvd · En route</div>
-              </div>
-            </div>
-            <div class="mock-row-r">$95</div>
-          </div>
-          <div class="mock-row">
-            <div class="mock-row-l">
-              <div class="mock-dot green"></div>
-              <div>
-                <div class="mock-row-title">Sprinter · 245/75R16 swap</div>
-                <div class="mock-row-sub">Miramar · Paid</div>
-              </div>
-            </div>
-            <div class="mock-row-r">$420</div>
-          </div>
-        </div>
-        <div class="mock-cta">+ New Roadside Call</div>
+      <div class="phone-screen" style="padding:0;overflow:hidden;">
+        <img
+          src="assets/screenshots/dashboard.jpeg"
+          alt="Mobile Service OS dashboard showing weekly profit, today's jobs, pending payments"
+          loading="eager"
+          style="display:block;width:100%;height:100%;object-fit:cover;object-position:top center;"
+        />
       </div>
     </div>
   </div>
@@ -455,6 +419,168 @@
         <h3>Role Based Access</h3>
         <p>Owner, admin, mobile tire technician. Every role sees exactly what they need and nothing more.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS GALLERY -->
+<section class="section screenshots" id="screenshots" aria-labelledby="screenshots-title">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="kicker gold-kicker">See it in action</span>
+      <h2 id="screenshots-title">Real screens from the real product.</h2>
+      <p class="section-sub">Mobile Service OS is live and shipping. These are actual screenshots from a working mobile tire business running on the platform today — not concepts, not mockups.</p>
+    </div>
+
+    <div class="ss-grid" style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-top: 36px;
+    ">
+      <figure class="ss-card" style="margin:0;text-align:center;">
+        <div class="ss-frame" style="
+          background: linear-gradient(155deg, #16161a 0%, #0a0a0a 100%);
+          border: 1px solid rgba(200,164,74,0.18);
+          border-radius: 28px;
+          padding: 14px 12px;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+          overflow: hidden;
+          aspect-ratio: 9/19.5;
+          display: flex; align-items: flex-start; justify-content: center;
+        ">
+          <img
+            src="assets/screenshots/quick-quote.jpeg"
+            alt="Quick Quote screen with suggested $90 and premium $115 pricing for a flat tire repair"
+            loading="lazy"
+            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
+          />
+        </div>
+        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Quick Quote</figcaption>
+        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+          Tap the service, vehicle, and miles. Suggested and premium prices appear instantly. Lead-source breakdown built in.
+        </p>
+      </figure>
+
+      <figure class="ss-card" style="margin:0;text-align:center;">
+        <div class="ss-frame" style="
+          background: linear-gradient(155deg, #16161a 0%, #0a0a0a 100%);
+          border: 1px solid rgba(200,164,74,0.18);
+          border-radius: 28px;
+          padding: 14px 12px;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+          overflow: hidden;
+          aspect-ratio: 9/19.5;
+          display: flex; align-items: flex-start; justify-content: center;
+        ">
+          <img
+            src="assets/screenshots/job-history.jpeg"
+            alt="Job History view with completed tire jobs, tire sizes, locations, profit per job"
+            loading="lazy"
+            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
+          />
+        </div>
+        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Job History</figcaption>
+        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+          Every roadside call logged. Filter by completed, pending, cancelled, unpaid. Search by name, service, location.
+        </p>
+      </figure>
+
+      <figure class="ss-card" style="margin:0;text-align:center;">
+        <div class="ss-frame" style="
+          background: linear-gradient(155deg, #16161a 0%, #0a0a0a 100%);
+          border: 1px solid rgba(200,164,74,0.18);
+          border-radius: 28px;
+          padding: 14px 12px;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+          overflow: hidden;
+          aspect-ratio: 9/19.5;
+          display: flex; align-items: flex-start; justify-content: center;
+        ">
+          <img
+            src="assets/screenshots/inventory.jpeg"
+            alt="Tire inventory by size and brand with hot sizes and low-stock alerts"
+            loading="lazy"
+            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
+          />
+        </div>
+        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Tire Inventory</figcaption>
+        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+          Stock by size and brand. Hot sizes pin to the top. Low-stock badges flag before you roll out empty.
+        </p>
+      </figure>
+
+      <figure class="ss-card" style="margin:0;text-align:center;">
+        <div class="ss-frame" style="
+          background: #fff;
+          border: 1px solid rgba(200,164,74,0.18);
+          border-radius: 28px;
+          padding: 14px 12px;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+          overflow: hidden;
+          aspect-ratio: 9/19.5;
+          display: flex; align-items: flex-start; justify-content: center;
+        ">
+          <img
+            src="assets/screenshots/invoice.jpeg"
+            alt="Branded Wheel Rush Mobile Tire Repair invoice showing logo, service details, total paid"
+            loading="lazy"
+            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
+          />
+        </div>
+        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Branded Invoice <span class="pro-tag" style="font-size:9px;padding:2px 6px;background:rgba(200,164,74,0.18);color:#c8a44a;border-radius:4px;margin-left:4px;">Pro</span></figcaption>
+        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+          Logo, brand color, contact info, review link. Generated and sent before you leave the shoulder.
+        </p>
+      </figure>
+
+      <figure class="ss-card" style="margin:0;text-align:center;">
+        <div class="ss-frame" style="
+          background: #fff;
+          border: 1px solid rgba(200,164,74,0.18);
+          border-radius: 28px;
+          padding: 14px 12px;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+          overflow: hidden;
+          aspect-ratio: 9/19.5;
+          display: flex; align-items: flex-start; justify-content: center;
+        ">
+          <img
+            src="assets/screenshots/review-sms.jpeg"
+            alt="One-tap review request SMS personalized with customer name and service area"
+            loading="lazy"
+            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
+          />
+        </div>
+        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Review Requests</figcaption>
+        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+          Customer-name-personalized SMS with your Google review link. One tap after the job. More 5-stars, no follow-up.
+        </p>
+      </figure>
+
+      <figure class="ss-card" style="margin:0;text-align:center;">
+        <div class="ss-frame" style="
+          background: linear-gradient(155deg, #16161a 0%, #0a0a0a 100%);
+          border: 1px solid rgba(200,164,74,0.18);
+          border-radius: 28px;
+          padding: 14px 12px;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+          overflow: hidden;
+          aspect-ratio: 9/19.5;
+          display: flex; align-items: flex-start; justify-content: center;
+        ">
+          <img
+            src="assets/screenshots/dashboard.jpeg"
+            alt="Dashboard with weekly profit, today's revenue and profit, pending payments"
+            loading="lazy"
+            style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:18px;"
+          />
+        </div>
+        <figcaption style="margin-top:14px;font-size:14px;font-weight:700;color:#fff;">Profit Dashboard</figcaption>
+        <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:280px;margin-left:auto;margin-right:auto;">
+          Weekly profit at 100% of goal. Today's net and profit. Pending payments. Real numbers, real-time.
+        </p>
+      </figure>
     </div>
   </div>
 </section>
