@@ -123,11 +123,12 @@
   .ss-card .ss-frame {
     /* Cap both axes: width AND height. Image is constrained
        within. object-fit: contain on the image preserves
-       aspect ratio without overflowing the frame. */
+       aspect ratio without overflowing the frame.
+       Sized to MATCH the hero phone scale (~260-280px max). */
     width: 100% !important;
-    max-width: clamp(180px, 22vw, 240px) !important;
+    max-width: clamp(180px, 20vw, 240px) !important;
     aspect-ratio: 9 / 19 !important;
-    max-height: 50vh !important;
+    max-height: 44vh !important;
     padding: clamp(8px, 1vw, 12px) !important;
     border-radius: clamp(22px, 2.4vw, 30px) !important;
     overflow: hidden !important;
@@ -166,8 +167,8 @@
       gap: 32px !important;
     }
     .ss-card .ss-frame {
-      max-width: 220px !important;
-      max-height: 480px !important;
+      max-width: 200px !important;
+      max-height: 420px !important;
     }
   }
 
@@ -177,8 +178,8 @@
       grid-template-columns: repeat(2, 1fr) !important;
     }
     .ss-card .ss-frame {
-      max-width: 210px !important;
-      max-height: 460px !important;
+      max-width: 190px !important;
+      max-height: 400px !important;
     }
   }
 
@@ -189,8 +190,8 @@
       gap: 28px !important;
     }
     .ss-card .ss-frame {
-      max-width: 200px !important;
-      max-height: 430px !important;
+      max-width: 180px !important;
+      max-height: 380px !important;
     }
   }
 
@@ -612,7 +613,7 @@
       <figure class="ss-card">
         <div class="ss-frame" style="background:linear-gradient(155deg,#16161a 0%,#0a0a0a 100%);border:1px solid rgba(200,164,74,0.18);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
           <img
-            src="quick-quote.jpeg"
+            src="invoice.jpeg"
             alt="Quick Quote screen with suggested $90 and premium $115 pricing for a flat tire repair"
             loading="lazy"
           />
@@ -654,7 +655,7 @@
       <figure class="ss-card">
         <div class="ss-frame" style="background:#fff;border:1px solid rgba(200,164,74,0.18);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
           <img
-            src="invoice.jpeg"
+            src="quick-quote.jpeg"
             alt="Branded Wheel Rush Mobile Tire Repair invoice showing logo, service details, total paid"
             loading="lazy"
           />
