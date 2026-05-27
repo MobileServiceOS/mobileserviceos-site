@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+
+<title>Privacy Policy | Mobile Service OS</title>
+<meta name="description" content="How Mobile Service OS handles your data: what we collect, how we use it, and your rights." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://mobileserviceos.app/privacy.html" />
+
+<link rel="icon" type="image/png" href="logo.png" />
+<link rel="apple-touch-icon" href="logo.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  .legal {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(48px, 7vw, 96px) clamp(20px, 4vw, 40px);
+    color: rgba(255,255,255,0.78);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+  .legal h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.022em;
+    line-height: 1.1;
+    color: #fff;
+    margin: 0 0 8px;
+  }
+  .legal .legal-meta {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+  .legal h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin: 36px 0 12px;
+  }
+  .legal p, .legal li {
+    color: rgba(255,255,255,0.72);
+  }
+  .legal ul {
+    padding-left: 22px;
+    margin: 8px 0 14px;
+  }
+  .legal li { margin: 6px 0; }
+  .legal a {
+    color: #c8a44a;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,164,74,0.3);
+  }
+  .legal a:hover { border-bottom-color: #c8a44a; }
+  .legal strong { color: #fff; font-weight: 600; }
+  .legal-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 24px;
+    border-bottom: 0 !important;
+  }
+  .legal-back:hover { color: #c8a44a; }
+</style>
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="/" class="brand" aria-label="Mobile Service OS home">
+      <img src="logo.png" alt="Mobile Service OS" width="44" height="44" />
+      <span class="brand-text">
+        <span class="brand-name">Mobile Service<span class="gold"> OS</span></span>
+      </span>
+    </a>
+    <div class="nav-cta">
+      <a class="btn btn-gold" href="https://app.mobileserviceos.app">Get Founder Access</a>
+    </div>
+  </div>
+</header>
+
+<main class="legal">
+  <a class="legal-back" href="/">← Back to home</a>
+  <h1>Privacy Policy</h1>
+  <p class="legal-meta">Effective May 26, 2026 · Last updated May 26, 2026</p>
+
+  <p>
+    Mobile Service OS ("we", "our", "the service") is software for mobile tire and roadside service operators. This policy explains what we collect, how we use it, who we share it with, and your rights.
+  </p>
+
+  <h2>1. Information you provide</h2>
+  <p>When you create an account, log a job, or use the service, you may provide:</p>
+  <ul>
+    <li><strong>Account information.</strong> Email address, name, business name, and authentication credentials (managed by Firebase Authentication).</li>
+    <li><strong>Business data.</strong> Service pricing, inventory, expenses, and other settings you configure.</li>
+    <li><strong>Customer data you enter.</strong> Names, phone numbers, addresses, vehicle information, photos, and notes about the customers you serve.</li>
+    <li><strong>Payment information.</strong> Handled entirely by Stripe. We do not store credit card numbers on our servers; we receive only subscription status and customer identifiers from Stripe.</li>
+  </ul>
+
+  <h2>2. Information collected automatically</h2>
+  <ul>
+    <li><strong>Authentication tokens.</strong> Firebase Authentication issues short-lived tokens used to identify your session.</li>
+    <li><strong>Service logs.</strong> Error reports and basic usage signals stored in our error-monitoring system, used for debugging and reliability.</li>
+    <li><strong>Local storage / IndexedDB.</strong> The app caches your business data on your device so it works offline. You can clear this from your browser at any time.</li>
+  </ul>
+  <p>We do <strong>not</strong> use third-party analytics, advertising trackers, or tracking cookies.</p>
+
+  <h2>3. How we use your information</h2>
+  <ul>
+    <li>To provide the service: log jobs, generate invoices, track inventory, manage your team.</li>
+    <li>To authenticate you and protect your account.</li>
+    <li>To process payments for the service via Stripe.</li>
+    <li>To debug errors and improve reliability via error logs.</li>
+    <li>To communicate with you about your account or service updates.</li>
+  </ul>
+  <p>We do not sell your data, and we do not share it with third parties for their own marketing purposes.</p>
+
+  <h2>4. Service providers we use</h2>
+  <p>To operate the service, we rely on the following third parties, who process data on our behalf:</p>
+  <ul>
+    <li><strong>Google Firebase</strong> (Firestore, Authentication, Cloud Functions, Cloud Storage, Hosting) — primary data storage and authentication.</li>
+    <li><strong>Stripe</strong> — payment processing for subscriptions. See <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe's privacy policy</a>.</li>
+    <li><strong>Cloudflare</strong> — edge infrastructure for supporting services.</li>
+    <li><strong>GitHub Pages</strong> — static hosting of the public website and the app shell.</li>
+  </ul>
+  <p>Each provider has its own privacy commitments. We choose providers that maintain industry-standard security practices.</p>
+
+  <h2>5. The data you enter about <em>your</em> customers</h2>
+  <p>
+    When you log jobs in Mobile Service OS, you may store information about <strong>your customers</strong> (names, phone numbers, addresses, vehicles, photos). You are the data controller for that information — Mobile Service OS is the data processor. You are responsible for:
+  </p>
+  <ul>
+    <li>Having a lawful basis to collect and store this customer information.</li>
+    <li>Disclosing your own privacy practices to your customers as required by applicable law.</li>
+    <li>Honoring your customers' rights (access, deletion, correction) under applicable law.</li>
+  </ul>
+  <p>
+    We will help you fulfill these obligations by giving you the ability to export and delete data you've entered (see Section 7).
+  </p>
+
+  <h2>6. Data retention</h2>
+  <p>
+    Your account data and the customer information you've entered is retained as long as your account is active. If you close your account, we will delete or anonymize your data within a reasonable period unless we are required to retain it by law (for example, tax records associated with paid invoices).
+  </p>
+
+  <h2>7. Your rights</h2>
+  <p>Depending on where you live, you may have the following rights regarding your personal information:</p>
+  <ul>
+    <li><strong>Access.</strong> Request a copy of the personal information we hold about you.</li>
+    <li><strong>Correction.</strong> Ask us to fix information that is incorrect or incomplete.</li>
+    <li><strong>Deletion.</strong> Ask us to delete your account and the associated personal information.</li>
+    <li><strong>Portability.</strong> Receive a copy of your data in a structured, machine-readable format.</li>
+    <li><strong>Opt-out of sale or sharing.</strong> We do not sell or share personal information for cross-context behavioral advertising. No opt-out is needed because no such activity occurs.</li>
+  </ul>
+  <p>
+    To exercise any of these rights, email <a href="mailto:info@mobileserviceos.app">info@mobileserviceos.app</a>. We will respond within the timeframe required by applicable law (typically 30 days).
+  </p>
+
+  <h2>8. Security</h2>
+  <p>
+    We use industry-standard encryption in transit (TLS), authentication tokens with short expiry, scoped access rules at the database level, and least-privilege controls for our service providers. No system is perfectly secure; if we ever experience a data breach that affects your information, we will notify you as required by applicable law.
+  </p>
+
+  <h2>9. Children</h2>
+  <p>
+    Mobile Service OS is not directed to children under 13, and we do not knowingly collect personal information from children under 13. If you believe we have collected information from a child, contact us and we will delete it.
+  </p>
+
+  <h2>10. International users</h2>
+  <p>
+    Mobile Service OS is operated in the United States. By using the service, you understand that your information will be processed in the United States, which may have different data-protection laws than your country.
+  </p>
+
+  <h2>11. Changes to this policy</h2>
+  <p>
+    We may update this policy from time to time. If we make material changes, we will notify you via the email address associated with your account or via a notice within the service. The "Last updated" date at the top of this page reflects the current version.
+  </p>
+
+  <h2>12. Contact</h2>
+  <p>
+    Questions about this policy? Email <a href="mailto:info@mobileserviceos.app">info@mobileserviceos.app</a>.
+  </p>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Mobile Service OS" width="36" height="36" />
+      <div>
+        <div class="brand-name">Mobile Service<span class="gold"> OS</span></div>
+        <div class="brand-tag">The operating system for mobile tire &amp; roadside businesses.</div>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="/#features">Features</a>
+      <a href="/#plans">Founder Access</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://app.mobileserviceos.app">Sign In</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:info@mobileserviceos.app">Contact</a>
+    </nav>
+    <div class="footer-meta">
+      <span>© 2026 Mobile Service OS. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
